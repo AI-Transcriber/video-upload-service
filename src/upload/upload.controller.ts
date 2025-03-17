@@ -20,10 +20,12 @@ export class UploadController {
       throw new BadRequestException('No file uploaded');
     }
 
-    return await this.uploadService.backBlazeBucket(
+    await this.uploadService.backBlazeBucket(
       file.originalname,
       file.buffer,
       file.mimetype,
     );
+
+    return { message: 'File uploaded successfully' };
   }
 }
